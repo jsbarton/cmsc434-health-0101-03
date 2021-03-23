@@ -1,1 +1,2 @@
-# cmsc434-health-0101-03
+# Health App
+This is the repository for our health app.
