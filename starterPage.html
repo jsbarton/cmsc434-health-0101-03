@@ -8,29 +8,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-<p class = "intro"> Let's find out more about you</p>
+<p class = "intro"><center> Let's find out more about you</center></p>
 
-<div class = "getToKnowForm">
-   <form action="/getToKnowInfo" method = "post" id = "getToKnow" >
+  <div class="container">
+  <form>
 
-     <div class = "name"> Name:  <input type="text" id = "name" required autofocus/> </div>
-     <br/>
-     <div class = "age"> Age: <input type="number" id = "age" required/> </div>
-     <br/>
-     <div class = "height"> Height: <input type="number" id = "height" required/> </div>
-     <br/>
-     <div class = "weight"> Weight <input type="number" id = "weight" required/> </div>
-     <br/>
-     <div class = "gender"> Gender:
-        <select name="selectGender" id="selectGender">
-          <option value="gender">Male</option>
-          <option value="gender">Female</option>
-          <option value="gender">Non-binary</option>
-          <option value="gender">Prefer not to say</option>
+    <ul class="flex-outer">
+      <li>
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+      </li>
+      <li>
+        <label for="Age">Age:</label>
+        <input type="number" id="age">
+      </li>
+      <li>
+        <label for="weight">Weight:</label>
+        <input type="number" id="age">
+      </li>
+      <li>
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+          <option value="genderType">Male</option>
+          <option value="genderType">Female</option>
+          <option value="genderType">Non-binary</option>
+          <option value="genderType">Prefer not to say</option>
         </select>
-        </div>
+      </li>
 
-<input type= "submit" class = "buttons" value="Submit" style="position: relative; top: 120px;"/>
+<!-- <input type= "submit" class = "buttons" value="Submit" /> -->
 
 
 

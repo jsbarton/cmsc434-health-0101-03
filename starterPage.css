@@ -1,29 +1,27 @@
 /* Let’s find out more about you */
 
 body {
-  position: relative;
-  width: 414px;
-  height: 736px;
   font-family: 'Spartan';
   background: #D0EEFF;
+  padding: 50px 0;
+  font-size: 1.2em;
 }
 
 .buttons {
   font-family: 'Spartan';
   background: transparent;
   border: none !important;
+  position: absolute;
+  top: 250px;
+  left: -10px;
 }
 
 .intro {
-position: absolute;
-width: 322px;
-height: 23px;
-left: 500px;
 
 font-family: 'Spartan';
 font-style: normal;
 font-weight: normal;
-font-size: 20px;
+
 line-height: 22px;
 /* identical to box height */
 
@@ -32,34 +30,40 @@ text-align: center;
 color: #000000;
 }
 
-.name {
-  position: relative;
-  top: 10px;
-  display: inline;
-}
-.age {
-  position: relative;
-  top: 30px;
-  display: inline;
-}
-.height {
-  position: relative;
-  top: 50px;
-  display: inline;
-}
-.weight {
-  position: relative;
-  top: 70px;
-  display: inline;
-}
-.gender {
-  position: relative;
-  top: 90px;
-  display: inline;
+
+.flex-outer{
+  list-style-type: none;
+  padding: 0;
 }
 
-.getToKnowForm {
-position: absolute;
-top: 7%;
-left: 10%;
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.container * {
+  box-sizing: border-box;
+}
+.flex-outer li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+  padding: 8px;
+  top: 15px;
+  /* font-weight: 300; */
+  /* font-size: 2.0em; */
+
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
 }
