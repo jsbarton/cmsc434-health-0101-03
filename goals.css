@@ -1,0 +1,24 @@
+.text {
+	position: relative;
+	width: 322px;
+	height: 23px;
+
+	font-family: Spartan;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 22px;
+/* identical to box height */
+
+	text-align: center;
+
+	color: #000000;
+}
+
+.checkbox {
+	position: relative;
+	width: 21px;
+	height: 21px;
+
+	background: #FFFFFF;
+}
