@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+  <link rel="stylesheet" href="goals.css">
+  <script type="text/javascript">
+    function loadForm() {
+    let types = ["Weight", "Diet", "Mental Health", "Social", "Endurance", "Strength"]
+
+    let form = document.getElementById("goal-form")
+
+    let i = 0
+    for (type of types) {
+      let div = document.createElement("div")
+      div.setAttribute("class", "option")
+      let input = document.createElement("input")
+      input.setAttribute("type", "checkbox")
+      input.setAttribute("class", "checkbox")
+      input.setAttribute("name", type)
+      let label = document.createElement("label")
+      label.setAttribute("class", "label")
+      label.setAttribute("for", type)
+      label.innerHTML = type
+      div.appendChild(input)
+      div.appendChild(label)
+      form.appendChild(div)
+    }
+    }
+    window.onload = loadForm;
+  </script>
+</head>
+<body>
+  <div class="background">
+  <div class="box" >
+    <h1 class="title" > What are your fitness goals? </h1>
+    <form class="form" id="goal-form">
+    </form>
+  </div>
+  </div>
+</body>
+</html>
