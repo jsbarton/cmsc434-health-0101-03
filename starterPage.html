@@ -3,11 +3,42 @@
 
 <html>
 <head>
-  <link rel="stylesheet" href="startPage.css">
+  <link rel="stylesheet" href="starterPage.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-<p class = "welcome"> Welcome </p>
-<a href = "starterPage.html"> Let's Get Started </a>
+<p class = "intro"> Let's find out more about you</p>
+
+<div class = "getToKnowForm">
+   <form action="/getToKnowInfo" method = "post" id = "getToKnow" >
+
+     <div class = "name"> Name:  <input type="text" id = "name" required autofocus/> </div>
+     <br/>
+     <div class = "age"> Age: <input type="number" id = "age" required/> </div>
+     <br/>
+     <div class = "height"> Height: <input type="number" id = "height" required/> </div>
+     <br/>
+     <div class = "weight"> Weight <input type="number" id = "weight" required/> </div>
+     <br/>
+     <div class = "gender"> Gender:
+        <select name="selectGender" id="selectGender">
+          <option value="gender">Male</option>
+          <option value="gender">Female</option>
+          <option value="gender">Non-binary</option>
+          <option value="gender">Prefer not to say</option>
+        </select>
+        </div>
+
+<input type= "submit" class = "buttons" value="Submit" style="position: relative; top: 120px;"/>
+
+
+
+</form>
+
+
+</div>
+
 
 </body>
 </html>

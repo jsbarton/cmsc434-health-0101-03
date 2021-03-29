@@ -1,9 +1,10 @@
 .welcome {
 position: absolute;
+
 width: 200px;
 height: 36px;
 
-font-family: Verdana;
+font-family: Spartan;
 font-style: normal;
 font-weight: normal;
 font-size: 32px;
@@ -11,6 +12,42 @@ line-height: 36px;
 /* identical to box height */
 
 text-align: center;
-
 color: #000000;
+top: 35%;
+
 }
+
+body {
+    background-color: #D0EEFF;
+}
+
+.starterPage { 
+
+position: absolute;
+
+width: 200px;
+height: 36px;
+
+font-family: Spartan;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 36px;
+/* identical to box height */
+
+text-align: center;
+color: #000000;
+top: 47%;
+}
+
+.center_lightbulb {
+    display: block;
+    margin-left: center;
+    margin-right: center;
+  }
+
+  .center_runner {
+    display: block;
+    margin-left: center;
+    margin-right: center;
+  }
