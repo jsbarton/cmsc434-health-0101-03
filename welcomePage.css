@@ -1,0 +1,16 @@
+.welcome {
+position: absolute;
+width: 200px;
+height: 36px;
+
+font-family: Verdana;
+font-style: normal;
+font-weight: normal;
+font-size: 32px;
+line-height: 36px;
+/* identical to box height */
+
+text-align: center;
+
+color: #000000;
+}
