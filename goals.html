@@ -5,28 +5,41 @@
 <head>
   <link rel="stylesheet" href="goals.css">
   <script type="text/javascript">
+    function setGoalTypes(event) {
+
+    }
+
     function loadForm() {
-    let types = ["Weight", "Diet", "Mental Health", "Social", "Endurance", "Strength"]
+      let types = ["Weight", "Diet", "Mental Health", "Social", "Endurance", "Strength"]
 
-    let form = document.getElementById("goal-form")
+      let form = document.getElementById("goal-form")
 
-    let i = 0
-    for (type of types) {
-      let div = document.createElement("div")
-      div.setAttribute("class", "option")
-      let input = document.createElement("input")
-      input.setAttribute("type", "checkbox")
-      input.setAttribute("class", "checkbox")
-      input.setAttribute("name", type)
-      let label = document.createElement("label")
-      label.setAttribute("class", "label")
-      label.setAttribute("for", type)
-      label.innerHTML = type
-      div.appendChild(input)
-      div.appendChild(label)
-      form.appendChild(div)
+      let i = 0
+      for (type of types) {
+        let div = document.createElement("div")
+        div.setAttribute("class", "option")
+        let input = document.createElement("input")
+        input.setAttribute("type", "checkbox")
+        input.setAttribute("class", "checkbox")
+        input.setAttribute("name", type)
+        let label = document.createElement("label")
+        label.setAttribute("class", "label")
+        label.setAttribute("for", type)
+        label.innerHTML = type
+        div.appendChild(input)
+        div.appendChild(label)
+        form.appendChild(div)
+      }
+
+      let button = document.createElement("button")
+      button.setAttribute("type", "submit")
+      button.setAttribute("class", "option")
+
+      form.appendChild(button)
+      form.addEventListener('submit', setGoalTypes);
+
     }
-    }
+    
     window.onload = loadForm;
   </script>
 </head>
