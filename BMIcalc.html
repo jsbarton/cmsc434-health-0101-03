@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+  <link rel="stylesheet" href="BMIcalc.css">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+	<div>
+		<p id="intro">Calculate your Body Mass Index (BMI)</p>
+		<form action="none" method="post" name="bmiform">
+			<fieldset>
+			<legend>Height and Weight</legend>
+				<label for="pounds">Weight (Pounds):</label>
+				<input type="text" name="pounds" id="pounds">
+				<br>
+				<label for="inches">Height (Inches):</label>
+				<input type="text" name="inches" id="inches">
+				<br>
+				<button type="button" name="calculate" value="Calculate your BMI" onclick="calcBMI()">Calculate</button>
+			</fieldset>
+			<fieldset>
+			<legend>BMI</legend>
+				<label for="bmi" id="bmi_label"> Your BMI is </label>
+				<input type="text" name="bmi" id="bmi" readonly="readonly">
+			</fieldset>
+		</form>
+	</div>
+</body>
