@@ -5,15 +5,19 @@
 <head>
   <link rel="stylesheet" href="goals.css">
   <script type="text/javascript">
-    function setGoalTypes(event) {
+    let selectedGoals = []
 
+    function setGoalTypes(event) {
+      
+      localStorage.setItem("goals", JSON.stringify(selectedGoals))
+      
     }
 
     function loadForm() {
       let types = ["Weight", "Diet", "Mental Health", "Social", "Endurance", "Strength"]
 
       let form = document.getElementById("goal-form")
-
+      console.log(localStorage.getItem("goals"))
       let i = 0
       for (type of types) {
         let div = document.createElement("div")
@@ -32,15 +36,32 @@
       }
 
       let button = document.createElement("button")
-      button.setAttribute("type", "submit")
-      button.setAttribute("class", "option")
+          button.setAttribute("style", "\"{align-self: center}\"")
+      button.innerHTML = "Next"
 
       form.appendChild(button)
-      form.addEventListener('submit', setGoalTypes);
+      
+      let checkboxes = document.querySelectorAll("input[type=checkbox]")
+
+      checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+          selectedGoals = 
+            Array.from(checkboxes) // Convert checkboxes to an array to use filter and map.
+            .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
+            .map(i => i.name) // Use Array.map to extract only the checkbox values from the array of objects.
+        })
+      });
+
+      button.addEventListener('click', () => {
+        if (selectedGoals.length == 0)
+          alert("Please select a goal type")
+        setGoalTypes(selectedGoals); 
+      })
 
     }
     
     window.onload = loadForm;
+    
   </script>
 </head>
 <body>
