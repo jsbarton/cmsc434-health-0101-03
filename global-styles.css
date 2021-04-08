@@ -1,0 +1,17 @@
+
+@font-face {
+  font-family: "Spartan";
+  src: url("Spartan-VariableFont_wght.ttf");
+  src: url("spartan-variablefont_wght-webfont.woff") format("woff");
+}
+  
+   
+body {
+  background: #D0EEFF;
+  max-width: 450px;
+  width: 100vw;
+  height: 100vh;
+  max-height: 900px; 
+  margin-left: auto;
+  margin-right: auto;
+}
