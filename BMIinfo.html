@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+	<link rel="stylesheet" href="BMIcalc.css">
+	<link rel="stylesheet" href="global-styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+  <script>
+    function loadBMI() {
+			
+      let bmi = localStorage.getItem("bmi")
+			if (bmi == null)	bmi = 0
+			document.getElementById("user-bmi").innerHTML = "Your BMI: " + bmi
+    } 
+
+		function setGoalBMI() {
+			 localStorage.setItem("goal-bmi", document.getElementById("goal-bmi").value);
+		 } 
+
+		window.onload = loadBMI
+  </script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<p id="intro">Goal BMI</p>
+		<form action="none" method="post" name="bmiform">
+			<fieldset>
+				<table id="table" style="font-size: 1rem; width: 100%; margin-bottom: 1rem; color: #212529;">
+					<caption >The standard weight status categories associated with BMI ranges for adults are shown in the following table.</caption>
+					<thead>
+					<tr>
+					<th scope="col" style="text-align: center;">BMI</th>
+					<th scope="col" style="text-align: center;">Weight Status</th>
+					</tr>
+					</thead>
+					<tbody style="font-size: .8rem; text-align: left; border-color: inherit;">
+					<tr>
+					<td>Below 18.5</td>
+					<td>Underweight</td>
+					</tr>
+					<tr>
+					<td>18.5 – 24.9</td>
+					<td>Normal or Healthy Weight</td>
+					</tr>
+					<tr>
+					<td>25.0 – 29.9</td>
+					<td>Overweight</td>
+					</tr>
+					<tr>
+					<td>30.0 and Above</td>
+					<td>Obese</td>
+					</tr>
+					</tbody>
+					</table>
+					<b id="user-bmi"></b>
+			</fieldset>
+			<fieldset>
+			<legend>Set Target BMI</legend>
+				<label for="bmi" id="bmi_label"> Target BMI: </label>
+				<input type="text" name="goal-bmi" id="goal-bmi">
+				<button type="button" name="calculate" value="Set" onclick="setGoalBMI()">Calculate</button>
+			</fieldset>
+		</form>
+    <form style="width: 50px; padding-top: 25px;" action="./BMIinfo.html">
+      <input style="width: 50px; text-align: center;" type="submit" value="Next" />
+    </form>
+	</div>
+</body>
