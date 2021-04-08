@@ -3,22 +3,33 @@
 
 <html>
 <head>
-  <link rel="stylesheet" href="BMIcalc.css">
+	<link rel="stylesheet" href="BMIcalc.css">
+	<link rel="stylesheet" href="global-styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
-
+  <script>
+    function calcBMI(event) {
+       console.log("hi")
+      let weight = document.getElementById("weight").value, height = document.getElementById("height").value;
+      let bmi = parseInt((weight * 703) / (height * height));
+			
+      localStorage.setItem("bmi", bmi);
+      document.getElementById("bmi").value = bmi;
+			
+    } 
+  </script>
 </head>
 
 <body>
-	<div>
+	<div class="wrapper">
 		<p id="intro">Calculate your Body Mass Index (BMI)</p>
 		<form action="none" method="post" name="bmiform">
 			<fieldset>
 			<legend>Height and Weight</legend>
 				<label for="pounds">Weight (Pounds):</label>
-				<input type="text" name="pounds" id="pounds">
+				<input type="text" name="pounds" id="weight">
 				<br>
 				<label for="inches">Height (Inches):</label>
-				<input type="text" name="inches" id="inches">
+				<input type="text" name="inches" id="height">
 				<br>
 				<button type="button" name="calculate" value="Calculate your BMI" onclick="calcBMI()">Calculate</button>
 			</fieldset>
@@ -28,5 +39,8 @@
 				<input type="text" name="bmi" id="bmi" readonly="readonly">
 			</fieldset>
 		</form>
+    <form style="width: 50px; padding-top: 25px;" action="./BMIinfo.html">
+      <input style="width: 50px; text-align: center;" type="submit" value="Next" />
+    </form>
 	</div>
 </body>
