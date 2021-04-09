@@ -14,6 +14,19 @@
 			alert("Enter most recent measured weight: ");
 		}
 
+		function sortList(list) {
+			let temp = {}
+			let keys = Object.keys(list)
+
+			keys.sort()
+
+			for (key of keys) {
+				temp[key] = list[key]
+			}
+
+			return temp
+		}
+
 		function setPastWeights() {
 			let date = document.getElementById("date").value
 			let weight = document.getElementById("weight").value
@@ -22,20 +35,20 @@
 
 			let l = JSON.parse(localStorage.getItem("weight-list"))
 			l[date] = parseInt(weight)
-			// need to sort the weight list correctly before setting back
+			l = sortList(l)
 			localStorage.setItem("weight-list", JSON.stringify(l))
+			location.reload()
 		}
 
 		function setCurrentWeight(weight, days) {
 			const now = new Date()
 
-			// `item` is an object which contains the original value
-			// as well as the time when it's supposed to expire
 			const currentWeight = {
 				weight: weight,
 				expiry: now.getTime() + 3600000*24*days,
 			}
 			localStorage.setItem("current-weight", JSON.stringify(currentWeight))
+			location.reload()
 		}
 
 		function setCheckFreq() {
