@@ -4,8 +4,65 @@
 <html>
 <head>
   <link rel="stylesheet" href="starterPage.css">
+  <link rel="stylesheet" href="global-styles.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+  <script>
+
+
+    //function to filter values
+
+    function setValues() {
+      let pass = true
+
+      let name = document.getElementById("name").value
+
+      let n = /\W/g
+
+      if (name.match(n) != null) {
+        alert("Error in name: only letters, numbers, and underscores allowed in name")
+        pass = false
+      }
+
+      let age = document.getElementById("age").value
+
+      let a = /\D/g
+
+      if (age.match(a) != null) {
+        alert("Error in age: only digits allowed in age")
+        pass = false
+      }
+
+      let height = document.getElementById("height").value
+
+      let h = /\D/g
+
+      if (height.match(h) != null) {
+        alert("Error in height: only digits for inches allowed in height")
+        pass = false
+      }
+
+      let weight = document.getElementById("weight").value
+
+      let w = /\D/g
+
+      if (weight.match(w) != null) {
+        alert("Error in weight: only digits for pounds allowed in weight")
+        pass = false
+      }
+
+      let gender = document.getElementById("gender").value
+
+      if (pass) {
+        localStorage.setItem("name", name)
+        localStorage.setItem("age", age)
+        localStorage.setItem("height", height)
+        localStorage.setItem("weight", weight)
+        localStorage.setItem("gender", gender)
+      }
+    
+    }
+  </script>
 </head>
 <body>
 <p class = "intro"><center> Let's find out more about you</center></p>
@@ -40,7 +97,7 @@
         </select>
       </li>
 
-<!-- <input type= "submit" class = "buttons" value="Submit" /> -->
+  <input type= "submit" class="buttons" value="Submit" onclick="setValues()"/> 
 
 
 

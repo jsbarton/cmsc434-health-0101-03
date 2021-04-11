@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+  <link rel="stylesheet" href="homePage.css">
+  <link rel="stylesheet" href="global-styles.css">
+  <script type="text/javascript">
+    let selectedGoals = []
+
+    function setGoalTypes(event) {
+      localStorage.setItem("goals", JSON.stringify(selectedGoals))
+      
+    }
+
+    function getLink(type) {
+        if (type == "Weight") {
+            return "/weighTracker.html"
+        } else if (type == "Weight") {
+
+        } else if (type == "Weight") {
+            
+        }
+    }
+
+    function loadGoals() {
+        let box = document.getElementById("box")
+        let goals = JSON.parse(localStorage.getItem("goals"))
+
+        let cnt = 0
+        let div = document.createElement("div")
+        div.setAttribute("class", "option")
+        
+        for (goal of goals) {
+            if (cnt % 2 == 0) {
+                div = document.createElement("div")
+                div.setAttribute("class", "option")
+                box.appendChild(div)
+            }
+            let button = document.createElement("button")
+            button.setAttribute("class", "select")
+            button.innerHTML = goal
+            div.appendChild(button)
+            cnt++
+        }
+        let title = document.getElementById("title")
+        let name = localStorage.getItem("name")
+        if (!name) title.innerHTML = "Welcome"
+        else title.innerHTML = "Welcome, " + name + "!"
+    }
+    
+    window.onload = loadGoals;
+    
+  </script>
+</head>
+<body>
+  <div class="background">
+  <div class="box" id="box">
+    <h1 class="title" id="title"> </h1>
+  </div>
+  </div>
+</body>
+</html>

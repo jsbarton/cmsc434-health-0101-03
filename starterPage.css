@@ -11,9 +11,6 @@ body {
   font-family: 'Spartan';
   background: transparent;
   border: none !important;
-  position: absolute;
-  top: 250px;
-  left: -10px;
 }
 
 .intro {
