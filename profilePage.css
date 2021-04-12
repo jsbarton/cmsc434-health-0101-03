@@ -1,0 +1,63 @@
+/* Let’s find out more about you */
+
+body {
+  font-family: 'Spartan';
+  background: #D0EEFF;
+  padding: 50px 0;
+  font-size: 1.2em;
+}
+
+.intro {
+  position: absolute;
+  top: 75px;
+  left: 137px;
+}
+
+.img-radius {
+  position: absolute;
+  top: 150px;
+  left: 132.5px;
+  background-color: #dedede;
+  border-radius: 3rem;
+}
+
+.container {
+  position: absolute;
+  top: 300px;
+  width: 100%
+}
+
+.activity-block {
+  position: absolute;
+  top: 370px;
+  width: 100%
+}
+.activity-level li.active {
+    background-color: #2ed8b6;
+}
+.activity-level li {
+    display: inline-block;
+    width: 15%;
+    height: 10px;
+    margin: 0 3px;
+    background-color: white;
+}
+
+.stats-block {
+  position: absolute;
+  background: #e8f5fc;
+  border-radius: 1rem;
+  top: 500px;
+  left: 10px;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1em;
+  gap: 50px;
+  text-align: center;
+}
+
+/* .stats-block .flex-item {
+  text-align: center;
+} */

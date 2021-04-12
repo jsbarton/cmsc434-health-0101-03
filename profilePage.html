@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+  <link rel="stylesheet" href="profilePage.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<p class = "intro">Your Profile </p>
+
+<div class="user-image">
+    <center><img src="profilePic.png" class="img-radius" alt="User-Profile-Image"></center>
+</div>
+
+<div class="container">
+  <p id="user-name"><center> Jane Doe </center></p>
+</div>
+
+<div class= "activity-block"
+<p><center>Today's Activity Level: <p id = "level">0</p></center></p>
+  <ul class="activity-level">
+    <li id = "bar1" onclick=changeColor(this)></li>
+    <li id = "bar2" onclick=changeColor(this)></li>
+    <li id = "bar3" onclick=changeColor(this)></li>
+    <li id = "bar4" onclick=changeColor(this)></li>
+    <li id = "bar5" onclick=changeColor(this)></li>
+  </ul>
+</div>
+
+<div class="stats-block">
+
+      <div id = "flex-item"> Age </div>
+      <div id = "flex-item"> Weight</div>
+      <div id = "flex-item"> Height</div>
+      <div id = "flex-item"> 25 </div>
+      <div id = "flex-item"> 150 </div>
+      <div id = "flex-item"> 5'7"</div>
+</div>
+<script src="profilePage.js" charset="utf-8"></script>
+</body>
+</html>
