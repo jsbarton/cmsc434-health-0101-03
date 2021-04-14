@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+	<link rel="stylesheet" href="dietHelper.css">
+	<link rel="stylesheet" href="global-styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js" integrity="sha512-dnUg2JxjlVoXHVdSMWDYm2Y5xcIrJg1N+juOuRi0yLVkku/g26rwHwysJDAMwahaDfRpr1AxFz43ktuMPr/l1A==" crossorigin="anonymous">
+  </script>
+	<script>
+		function analyzeDiet() {
+      let grains = document.getElementById("grains").value
+      let fruits = document.getElementById("fruits").value
+      let vegetables = document.getElementById("vegetables").value
+      let diary = document.getElementById("dairy").value
+      let protein = document.getElementById("protein").value
+      let fats = document.getElementById("fats").value
+
+      let foods = {
+        "grains": document.getElementById("grains").value,
+        "fruits": document.getElementById("fruits").value,
+        "vegetables": document.getElementById("vegetables").value,
+        "diary": document.getElementById("dairy").value,
+        "protein": document.getElementById("protein").value,
+        "fats": document.getElementById("fats").value
+      }
+
+      let servings = {
+        "grains": [6,8],
+        "fruits": [2,4],
+        "vegetables": [4,6],
+        "diary": [2,3],
+        "protein": [2,3],
+        "fats": [0,1]
+      }
+
+      let regex = /^[0-9]+(.|,)?[0-9]?$/
+
+      let analysis = ""
+
+      for (group of Object.keys(foods)) {
+        if (foods[group].match(regex) == null) {
+          alert("" + group + " value error: please enter number of servings (e.g. 2, 3.5, etc)")
+        } else {
+          let val = parseFloat(foods[group])
+          let lower = servings[group][0]
+          let upper = servings[group][1]
+
+          console.log(upper-val)
+          if (val < servings[group][0]) {
+            analysis += "We recommend increaing " + group + " in your diet: include " + (lower-val) + " to " + (upper-val) + " more servings.<br><br>"
+          } else if (val > servings[group][1]) {
+            analysis += "We recommend lowering consumption of " + group + " in your diet: try " + (val-upper) + " less servings.<br><br>"
+          } else {
+            analysis += "" + val + " servings of " + group + " is great. Good job!<br><br>"
+          }
+        }
+      }
+
+      let wrapper = document.getElementById("app")
+
+      let response = document.createElement("p")
+      response.setAttribute("id", "analysis")
+      response.innerHTML = analysis
+      wrapper.appendChild(response)
+
+    }
+	</script>
+</head>
+
+<body>	
+	<div class="wrapper" id="app">
+			<p id="intro" style="font-weight: 800;">Your Diet Helper</p>
+			<form style="font-weight: 600; font-size: 14px;" action="none" method="post" id="dietForm">
+					<fieldset>
+					<legend style="font-weight: 800;">How many servings?</legend>
+						<label for="grains" class="tooltip">Grains:
+              <span class="tooltiptext">
+                One-ounce equivalent or serving of grains: one-half cup cooked pasta, rice, or cereal; one bread slice; or one cup dry cereal.
+              </span>
+            </label>
+						<input type="text" name="grains" id="grains">
+						<br>
+						<label for="fruits" class="tooltip">Fruits:
+                <span class="tooltiptext">
+                  One serving of fruit: one-half cup fruit juice, one piece of medium-sized fruit (like an orange, apple, or banana), one-half cup cut fruit, or one-quarter cup dried fruit.
+                </span>
+            </label>
+						<input type="text" name="fruits" id="fruits">
+            <br>
+            <label for="vegetables" class="tooltip">Vegetables:
+                <span class="tooltiptext">
+                  One serving of vegetables: one-half cup vegetable juice, one-half cup cut vegetables, or one cup of raw leafy vegetables (such as spinach or salad).
+                </span>
+            </label>
+						<input type="text" name="vegetables" id="vegetables">
+            <br>
+            <label for="dairy" class="tooltip">Diary:
+                <span class="tooltiptext">
+                  One cup equivalent of milk: one cup yogurt or milk, 1½ ounces low-fat or fat-free natural cheese, or two ounces processed or packed cheese.
+                </span>
+            </label>
+						<input type="text" name="dairy" id="dairy">
+            <br>
+            <label for="protein" class="tooltip">Protein:
+                <span class="tooltiptext">
+                  One ounce equivalent of meat or beans: one-quarter cup cooked beans; one tablespoon peanut butter or other nut butter; one egg; or one ounce cooked meat, chicken, or fish.
+                </span>
+            </label>
+						<input type="text" name="protein" id="protein">
+            <br>
+            <label for="fats" class="tooltip">Fats:
+                <span class="tooltiptext">
+                  One serving of oil: one teaspoon any vegetable oil, one tablespoon low-fat mayo, or two tablespoons light salad dressing,
+                </span>
+            </label>
+						<input type="text" name="fats" id="fats">
+            <br>
+						<button type="button" name="calculate" value="Analyze" onclick="analyzeDiet()">Analyze</button>
+					</fieldset>
+				</form>
+	</div>
+</body>
