@@ -7,69 +7,14 @@
   <link rel="stylesheet" href="global-styles.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
-  <script>
-
-
-    //function to filter values
-
-    function setValues() {
-      let pass = true
-
-      let name = document.getElementById("name").value
-
-      let n = /\W/g
-
-      if (name.length == 0 || name.match(n) != null) {
-        alert("Error in name: only letters, numbers, and underscores allowed in name")
-        pass = false
-      }
-
-      let age = document.getElementById("age").value
-
-      let a = /\D/g
-
-      if (age.length == 0 || age.match(a) != null) {
-        alert("Error in age: only digits allowed in age")
-        pass = false
-      }
-
-      let height = document.getElementById("height").value
-
-      let h = /\D/g
-
-      if (height.length == 0 || height.match(h) != null) {
-        alert("Error in height: only digits for inches allowed in height")
-        pass = false
-      }
-
-      let weight = document.getElementById("weight").value
-
-      let w = /\D/g
-
-      if (weight.length == 0 || weight.match(w) != null) {
-        alert("Error in weight: only digits for pounds allowed in weight")
-        pass = false
-      }
-
-      let gender = document.getElementById("gender").value
-
-      if (pass) {
-        localStorage.setItem("name", name)
-        localStorage.setItem("age", parseInt(age))
-        localStorage.setItem("height", parseInt(height))
-        localStorage.setItem("weight", parseInt(weight))
-        localStorage.setItem("gender", gender)
-      }
-      return pass
-    }
-  </script>
+  <script src="starterPage.js"></script>
 </head>
+
 <body>
 <p class = "intro"><center> Let's find out more about you</center></p>
 
   <div class="container">
-  <form onsubmit="return setValues()" action ="./goals.html">
-
+  <form onsubmit="return getInfo()" action="profilePage.html">
     <ul class="flex-outer">
       <li>
         <label for="name">Name:</label>
@@ -96,16 +41,12 @@
           <option value="genderType">Prefer not to say</option>
         </select>
       </li>
-
   <input type= "submit" class="buttons" value="Submit" /> 
-
-
-
 </form>
 
 
 </div>
 
-
+<script src="starterPage.js"></script>
 </body>
 </html>

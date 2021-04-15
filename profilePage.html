@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+  <link rel="stylesheet" href="profilePage.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class = "outer">
+<p class = "intro">Your Profile </p>
+
+<div class="user-image">
+    <img src="profilePic.png" class="img-radius" alt="User-Profile-Image" id = "photo">
+    <input type="file" id = "file">
+    <label for="file" id = "upload-btn"> Choose Photo</label>
+</div>
+
+<div class="container">
+  <p id="user-name"></p>
+</div>
+
+<div class= "activity-block"
+<p><center>Today's Activity Level: <p id = "level" value=0>0</p></center></p>
+  <ul class="activity-level">
+    <li id = "bar1" onclick=changeColor(this)></li>
+    <li id = "bar2" onclick=changeColor(this)></li>
+    <li id = "bar3" onclick=changeColor(this)></li>
+    <li id = "bar4" onclick=changeColor(this)></li>
+    <li id = "bar5" onclick=changeColor(this)></li>
+  </ul>
+</div>
+
+<div class="stats-block">
+
+      <div id = "flex-age-name"> Age </div>
+      <div id = "flex-w-name"> Weight</div>
+      <div id = "flex-h-name"> Height</div>
+      <div class="break"></div> <!-- break -->
+      <div id = "flex-age"></div>
+      <div id = "flex-height"></div>
+      <div id = "flex-weight"></div>
+</div>
+</div>
+<script src="profilePage.js" charset="utf-8"></script>
+</body>
+</html>
