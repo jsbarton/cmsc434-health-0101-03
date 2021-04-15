@@ -1,5 +1,16 @@
-// Start with an initial value of 20 seconds
-const TIME_LIMIT = 20;
+var minutes= prompt("For how many minutes would you like to do this exercise?");
+var seconds= prompt("For how many seconds would you like to do this exercise?");
+
+let a = /\D/g;
+let pass = true;
+
+if (minutes.match(a) != null && seconds.match(a) !=null) {
+  alert("Please only enter digits.")
+  pass = false;
+}
+
+if (pass) {
+const TIME_LIMIT = (minutes*60)+seconds;
 const FULL_DASH_ARRAY = 189;
 const COLOR_CODES = {
   info: {
@@ -35,9 +46,6 @@ document.getElementById("timer").innerHTML =
 </div>
 `;
 
-// Initially, no time has passed, but this will count up
-// and subtract from the TIME_LIMIT
-
 
 function startTimer() {
   timerInterval = setInterval(() => {
@@ -48,10 +56,10 @@ function startTimer() {
     setCircleDasharray();
 
     if (timeLeft < 0){
+      alert("Time's up!");
       return;
     }
 
-    // The time left label is updated
     document.getElementById("base-timer-label").innerHTML = formatTimeLeft(timeLeft);
   }, 1000);
 }
@@ -59,13 +67,11 @@ function startTimer() {
 startTimer();
 
 function formatTimeLeft(time) {
-  // The largest round integer less than or equal to the result of time divided being by 60.
+
   const minutes = Math.floor(time / 60);
 
-  // Seconds are the remainder of the time divided by 60 (modulus operator)
   let seconds = time % 60;
 
-  // If the value of seconds is less than 10, then display seconds with a leading zero
   if (seconds < 10) {
     seconds = `0${seconds}`;
   }
@@ -75,8 +81,9 @@ function formatTimeLeft(time) {
 }
 
 function calculateTimeFraction() {
-    const rawTimeFraction = timeLeft / TIME_LIMIT;
-    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+    // const rawTimeFraction = timeLeft / TIME_LIMIT;
+    // return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+    return timeLeft/ TIME_LIMIT;
 }
 
 function setCircleDasharray() {
@@ -86,4 +93,7 @@ function setCircleDasharray() {
   document
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
+}
+} else {
+  window.location.href = "exercises.html";
 }
