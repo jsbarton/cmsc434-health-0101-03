@@ -19,7 +19,7 @@
 
       let n = /\W/g
 
-      if (name.match(n) != null) {
+      if (name.length == 0 || name.match(n) != null) {
         alert("Error in name: only letters, numbers, and underscores allowed in name")
         pass = false
       }
@@ -28,7 +28,7 @@
 
       let a = /\D/g
 
-      if (age.match(a) != null) {
+      if (age.length == 0 || age.match(a) != null) {
         alert("Error in age: only digits allowed in age")
         pass = false
       }
@@ -37,7 +37,7 @@
 
       let h = /\D/g
 
-      if (height.match(h) != null) {
+      if (height.length == 0 || height.match(h) != null) {
         alert("Error in height: only digits for inches allowed in height")
         pass = false
       }
@@ -46,7 +46,7 @@
 
       let w = /\D/g
 
-      if (weight.match(w) != null) {
+      if (weight.length == 0 || weight.match(w) != null) {
         alert("Error in weight: only digits for pounds allowed in weight")
         pass = false
       }
@@ -55,12 +55,12 @@
 
       if (pass) {
         localStorage.setItem("name", name)
-        localStorage.setItem("age", age)
-        localStorage.setItem("height", height)
-        localStorage.setItem("weight", weight)
+        localStorage.setItem("age", parseInt(age))
+        localStorage.setItem("height", parseInt(height))
+        localStorage.setItem("weight", parseInt(weight))
         localStorage.setItem("gender", gender)
       }
-    
+      return pass
     }
   </script>
 </head>
@@ -68,7 +68,7 @@
 <p class = "intro"><center> Let's find out more about you</center></p>
 
   <div class="container">
-  <form>
+  <form onsubmit="return setValues()" action ="./goals.html">
 
     <ul class="flex-outer">
       <li>
@@ -97,7 +97,7 @@
         </select>
       </li>
 
-  <input type= "submit" class="buttons" value="Submit" onclick="setValues()"/> 
+  <input type= "submit" class="buttons" value="Submit" /> 
 
 
 
