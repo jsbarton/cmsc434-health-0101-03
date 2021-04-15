@@ -6,20 +6,15 @@
   <link rel="stylesheet" href="homePage.css">
   <link rel="stylesheet" href="global-styles.css">
   <script type="text/javascript">
-    let selectedGoals = []
-
-    function setGoalTypes(event) {
-      localStorage.setItem("goals", JSON.stringify(selectedGoals))
-      
-    }
+    
 
     function getLink(type) {
         if (type == "Weight") {
-            return "/weighTracker.html"
-        } else if (type == "Weight") {
-
-        } else if (type == "Weight") {
-            
+            return "./weightTracker.html"
+        } else if (type == "Diet") {
+          return "./dietHelper.html"
+        } else if (type == "Mental Health") {
+          return "./mentalTracker.html"
         }
     }
 
@@ -33,12 +28,13 @@
         
         for (goal of goals) {
             if (cnt % 2 == 0) {
-                div = document.createElement("div")
+                div = document.createElement("form")
                 div.setAttribute("class", "option")
                 box.appendChild(div)
             }
             let button = document.createElement("button")
             button.setAttribute("class", "select")
+            button.setAttribute("formaction", getLink(goal))
             button.innerHTML = goal
             div.appendChild(button)
             cnt++
@@ -47,6 +43,11 @@
         let name = localStorage.getItem("name")
         if (!name) title.innerHTML = "Welcome"
         else title.innerHTML = "Welcome, " + name + "!"
+
+        let divider = document.createElement("hr")
+        divider.setAttribute("class", "rounded")
+
+        box.appendChild(divider)
     }
     
     window.onload = loadGoals;
@@ -57,6 +58,7 @@
   <div class="background">
   <div class="box" id="box">
     <h1 class="title" id="title"> </h1>
+    <hr class="rounded">
   </div>
   </div>
 </body>

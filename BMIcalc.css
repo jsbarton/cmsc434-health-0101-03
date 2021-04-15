@@ -22,7 +22,7 @@ button {
 
 .wrapper {
     font-family: 'Spartan';
-    padding: 50px 0;
+    padding: 00px 0;
 		font-size: 1.2em;
 		display: flex;
 		flex-direction: column;
@@ -48,7 +48,7 @@ input {
 
 #intro {
 	width: 300px;
-	margin: 25px 0 0 0px;
+	margin: 10px 0 0 0px;
 	padding: 10px;
 	border: 1px solid #999999;
 	box-shadow: 1px 1px #cccccc;

@@ -10,7 +10,14 @@
     function loadBMI() {
 			
       let bmi = localStorage.getItem("bmi")
-			if (bmi == null)	bmi = 0
+			if (bmi == null)	{
+				let weight = localStorage.getElementById("weight") 
+				let height = localStorage.getElementById("height") 
+				let bmi = parseInt((weight * 703) / (height * height));
+			
+				localStorage.setItem("bmi", bmi);
+			
+			}
 			document.getElementById("user-bmi").innerHTML = "Your BMI: " + bmi
     } 
 

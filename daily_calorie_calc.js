@@ -17,7 +17,7 @@ function calc_calories() {
     if (is_male) {
     	bmr = 66 + (6.3 * weight) + (12.9 * height) - (6.8 * age);
     } else {
-    	bmr = 655 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
+    	bmr = 65 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
     }
 
     return exercise_coefficient * bmr;
