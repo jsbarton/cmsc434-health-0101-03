@@ -10,75 +10,6 @@
   </script>
 	<script>
 		
-		function promptWeight(event) {
-			alert("Enter most recent measured weight: ");
-		}
-
-		function sortList(list) {
-			let temp = {}
-			let keys = Object.keys(list)
-
-			keys.sort()
-
-			for (key of keys) {
-				temp[key] = list[key]
-			}
-
-			return temp
-		}
-
-		function setPastWeights() {
-			let date = document.getElementById("date").value
-			let weight = document.getElementById("weight").value
-
-			let d = /^\d{1,2}\/\d{1,2}\/\d{4}$/g
-
-			if (date.match(d) == null) {
-				alert("Error in date: please follow format of month/day/year, or mm/dd/yyyy")
-			}
-
-			let w = /\D/g
-
-			if (date.match(w) != null) {
-				alert("Error in weight: please only use numbers in weight entry")
-			}
-
-			let l = JSON.parse(localStorage.getItem("weight-list"))
-			l[date] = parseInt(weight)
-			l = sortList(l)
-			localStorage.setItem("weight-list", JSON.stringify(l))
-			location.reload()
-		}
-
-		function deletePastWeights() {
-			let date = document.getElementById("date").value
-			let weight = document.getElementById("weight").value
-
-			let d = /^\d{1,2}\/\d{1,2}\/\d{4}$/g
-
-			if (date.match(d) == null) {
-				alert("Error in date: please follow format of month/day/year, or mm/dd/yyyy")
-			}
-
-			let w = /\D/g
-
-			if (date.match(w) != null) {
-				alert("Error in weight: please only use numbers in weight entry")
-			}
-
-			let list = JSON.parse(localStorage.getItem("weight-list"))
-
-			if (list != null) {
-				if (list[date] != null) {
-					delete list[date]
-					localStorage.setItem("weight-list", JSON.stringify(list))
-				} else {
-					alert("Entered date does not exist")
-				}
-			} else {
-				alert("No weight entries to delete")
-			}
-		}
 
 		function setCurrentWeight(weight, days) {
 			const now = new Date()
@@ -97,14 +28,14 @@
 			localStorage.setItem("check-freq", days)
 		}
 
-		function getCurrentWeight() {
-			const currStr = localStorage.getItem("current-weight")
+		function getCurrentMood() {
+			const currStr = localStorage.getItem("current-mood")
 			// if the item doesn't exist, return null
 			if (!currStr) {
 				return null
 			}
 
-			const currentWeight = JSON.parse(currStr)
+			const currentMood = JSON.parse(currStr)
 			const now = new Date()
 			// compare the expiry time of the item with the current time
 			if (now.getTime() > currentWeight.expiry) {
@@ -113,7 +44,7 @@
 				localStorage.removeItem(currStr)
 				return null
 			}
-			return currentWeight.weight
+			return currentMood.mood
 		}
 
 		function formatDate()
@@ -129,39 +60,71 @@
 
 		function loadChart() {
 
-			weightList = localStorage.getItem("weight-list")
+			moodList = localStorage.getItem("mood-list")
 
-			if (weightList == null) {
-				localStorage.setItem("weight-list", JSON.stringify({}))
+			if (moodList == null) {
+				localStorage.setItem("mood-list", JSON.stringify({}))
 			}
-			
-			if (getCurrentWeight() == null) {
-				let currentWeight = parseInt(prompt("Enter your most current weight measurement: ", "weight in lbs"))
-				
-    		setCurrentWeight(currentWeight, localStorage.getItem("check-freq") || 7)
-				a = JSON.parse(localStorage.getItem("weight-list"))
-				a[formatDate()] = currentWeight
-				console.log(Object.keys(a))
-				localStorage.setItem("weight-list", JSON.stringify(a))
-				
-			}
-
 			
 			let ctx = document.getElementById('myChart').getContext('2d');
-			let weight_object = JSON.parse(localStorage.getItem("weight-list"))
+			let mood_object = JSON.parse(localStorage.getItem("mood-list"))
+			let moods = Object.keys(mood_object).map((x) => mood_object[x]["mood"])
+			let energies = Object.keys(mood_object).map((x) => mood_object[x]["energy"])
+
+			let yLabels = {
+					1 : 'Very Low', 2 : 'Low', 3 : 'Neutral', 4 : 'High',
+					5 : 'Very High',
+			}
+
 			let myChart = new Chart(ctx, {
     		type: 'line',
     		data: {
 				//dynamiclly set up labels based on time between each weight entry
-        labels: Object.keys(weight_object),
+        labels: Object.keys(mood_object),
         datasets: [{
-            label: 'Weight',
-						data: Object.values(weight_object),
-						borderColor: "",
-						backgroundColor: ""
-        }]
+            label: 'Mood',	
+						data: moods,
+						borderColor: "red",
+						backgroundColor: "red"
+        },{
+					label: 'Energy',
+						data: energies,
+						borderColor: "blue",
+						backgroundColor: "blue"
+				}
+				]
 				},
 					options: {
+						scales: {
+							yAxes: [{
+								display: true,
+								scaleLabel: {
+									display: true,
+									labelString: 'Value'
+								},
+								ticks: {
+								min: 0,
+								max: 5,
+								stepSize: 1,
+									callback: function(label, index, labels) {
+										switch (label) {
+											case 0:
+												return '';
+											case 1:
+												return 'Very Low';
+											case 2:
+												return 'Low';
+											case 3:
+												return 'Neutral';
+											case 4:
+												return 'High';
+											case 5:
+												return 'Very High';
+										}
+									}
+								},
+							}]
+						},
 						responsive: false,
 						plugins: {
 							legend: {
@@ -169,7 +132,7 @@
 							},
 							title: {
 								display: true,
-								text: 'Weight chart'
+								text: 'Mood chart'
 							}
 						}
 					}
@@ -184,32 +147,11 @@
 
 <body>	
 	<div class="wrapper" id="app">
-			<p id="intro">Your Weight Tracker</p>
+			<p id="intro">Your Mood Tracker</p>
 			<canvas id="myChart" width="350px" height="350px"></canvas>
-			<form action="none" method="post" id="pastWeightsForm">
-					<fieldset>
-					<legend>Set/Delete Past Weights</legend>
-						<label for="date">Date (mm/dd/yyyy):</label>
-						<input type="text" name="date" id="date">
-						<br>
-						<label for="weight">Weight (pounds):</label>
-						<input type="text" name="weight" id="weight">
-						<br>
-						<button type="button" name="calculate" value="Set" onclick="setPastWeights()">Set</button>
-						<button type="button" name="calculate" value="Delete" onclick="deletePastWeights()">Delete</button>
-					</fieldset>
-				</form>
-				<form action="none" method="post" id="frequencyForm">
-						<fieldset>
-						<legend>Set Weight Reminder</legend>
-							<label for="days"># of days:</label>
-							<input type="text" name="days" id="days">
-							<br>
-							<button type="button" name="calculate" value="days" onclick="setCheckFreq()">Set</button>
-						</fieldset>
-					</form>
-					<a href="./homePage.html">
-					<img src="back_button.svg" style="margin: 10px 0px 10px 10px; width: 50px;"> Back to Home Page
-					</a>
+
+			<a href="./homePage.html">
+				<img src="back_button.svg" style="margin: 10px 0px 10px 10px; width: 50px;"> Back to Home Page
+				</a>
 	</div>
 </body>

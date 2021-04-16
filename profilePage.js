@@ -1,3 +1,6 @@
+
+function onLoad() {
+
 var name = localStorage.getItem("name");
 var age = localStorage.getItem("age", age);
 var height = localStorage.getItem("height", height);
@@ -13,6 +16,7 @@ const imgDiv = document.querySelector('.user-image');
 const img = document.querySelector('#photo');
 const file = document.querySelector('#file');
 const uploadBtn = document.querySelector('#upload-btn');
+
 
 imgDiv.addEventListener('mouseenter', function()
 {
@@ -38,17 +42,35 @@ file.addEventListener('change', function() {
   }
 });
 
-function changeColor(element){
-  if (element.style.backgroundColor == "white") {
-    let val = document.getElementById('level');
-    // val = parseInt(val);
-    console.log(typeof(val));
-    console.log(typeof(20));
-    val+=20;
-    document.getElementById('level').innerHTML = val;
-    element.style.backgroundColor = "turquoise";
-  } else {
-    element.style.backgroundColor ="white";
-  }
-
 }
+
+function changeColor(element){
+  let bars = document.getElementsByName('bar');
+  let cnt = 0
+  let len = bars.length
+  let val = 0
+  
+  let i = parseInt(element.value)
+  if (element.style.backgroundColor = "turquoise") {
+      val = i-1
+      while (i < len) {
+          bars.item(i).style.backgroundColor = "white"
+          i+=1
+      }
+  } else {
+        val = i
+        while (i >= 0) {
+          bars.item(i).style.backgroundColor = "turquoise"
+          i-=1  
+        }
+      
+      
+  }
+  
+
+  val*=20;
+  document.getElementById('level').innerHTML = val+20
+  
+}
+
+window.onload = onLoad

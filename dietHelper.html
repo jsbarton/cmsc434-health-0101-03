@@ -58,19 +58,23 @@
         }
       }
 
-      let wrapper = document.getElementById("app")
+      let wrapper = document.getElementById("box")
+      if (document.getElementById("analysis")) {
+        document.getElementById("analysis").innerHTML = analysis
+      } else {
 
-      let response = document.createElement("p")
-      response.setAttribute("id", "analysis")
-      response.innerHTML = analysis
-      wrapper.appendChild(response)
-
+        let response = document.createElement("p")
+        response.setAttribute("id", "analysis")
+        response.innerHTML = analysis
+        wrapper.appendChild(response)
+      }
     }
 	</script>
 </head>
 
 <body>	
 	<div class="wrapper" id="app">
+    <div id="box">
 			<p id="intro" style="font-weight: 800;">Your Diet Helper</p>
 			<form style="font-weight: 600; font-size: 14px;" action="none" method="post" id="dietForm">
 					<fieldset>
@@ -120,8 +124,10 @@
 						<button type="button" name="calculate" value="Analyze" onclick="analyzeDiet()">Analyze</button>
 					</fieldset>
         </form>
+      </div>
         <a href="./homePage.html">
-					<img src="back_button.svg" style="margin: 10px 0px 10px 10px; width: 50px;"> Back to Home Page
-					</a>
-	</div>
+          <img src="back_button.svg" style="margin: 10px 0px 10px 10px; width: 50px;"> Back to Home Page
+          </a>
+  </div>
+  
 </body>
