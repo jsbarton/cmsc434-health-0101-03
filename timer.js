@@ -1,6 +1,9 @@
 var minutes= prompt("For how many minutes would you like to do this exercise?");
 var seconds= prompt("For how many seconds would you like to do this exercise?");
 
+console.log(minutes);
+console.log(seconds);
+
 let a = /\D/g;
 let pass = true;
 
@@ -10,7 +13,8 @@ if (minutes.match(a) != null && seconds.match(a) !=null) {
 }
 
 if (pass) {
-const TIME_LIMIT = (minutes*60)+seconds;
+var TIME_LIMIT = parseInt(minutes*60)+parseInt(seconds);
+console.log(TIME_LIMIT);
 const FULL_DASH_ARRAY = 189;
 const COLOR_CODES = {
   info: {
@@ -69,9 +73,10 @@ startTimer();
 function formatTimeLeft(time) {
 
   const minutes = Math.floor(time / 60);
+  console.log(minutes);
 
   let seconds = time % 60;
-
+  console.log(seconds);
   if (seconds < 10) {
     seconds = `0${seconds}`;
   }
