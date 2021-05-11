@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+  <link rel="stylesheet" href="mentalCalc.css">
+  <link rel="stylesheet" href="global-styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+</head>
+<script>
+  function formatDate()
+		{
+			date = new Date()
+			var dd = date.getDate(); 
+			var mm = date.getMonth()+1;
+			var yyyy = date.getFullYear(); 
+			if(dd<10){dd='0'+dd} 
+			if(mm<10){mm='0'+mm};
+			return d = mm+'/'+dd+'/'+yyyy
+		}
+  function setMood() {
+    let mental = {
+      'mood': "",
+      'energy': ""
+    }
+
+    let moods = document.getElementsByName('q1');
+
+    for (mood in moods) {
+      if (mood.checked) {
+        mental['mood'] = parseInt(mood.value)
+      }
+    }
+
+    let energies = document.getElementsByName('q2');
+
+    for (energy in energies) {
+      if (energy.checked) {
+        mental['energy'] = parseInt(energy.value)
+      }
+    }
+
+    localStorage.setItem("current-mood", JSON.stringify(mental))
+
+    let list = JSON.parse(localStorage.getItem("mood-list"))
+    
+    let date = formatDate()
+    if (list == null) {
+      localStorage.setItem("mood-list", JSON.stringify({date: mental}))
+    } else {
+      list[date] = mental
+      localStorage.setItem("mood-list", JSON.stringify(list))
+    }
+  }
+
+</script>
+<body>
+  <form onsubmit="return setMood()" action="./mentalTracker.html">
+    <div class="bs-example">
+        <p class="lead">How postive/negative do you feel?</p>
+        <label>
+            <input type="radio" name="q1" value="1"> Very negative </label>
+        <label>
+            <input type="radio" name="q1" value="2"> Negative </label>
+        <label>
+            <input type="radio" name="q1" value="3"> Neutral </label>
+        <label>
+            <input type="radio" name="q1" value="4"> Positive </label>
+        <label>
+            <input type="radio" name="q1" value="5"> Very Positive </label>
+        <br>
+        <br>
+        <p class="lead">How high/low enegery do you feel?</p>
+        <label>
+            <input type="radio" name="q2" value="1"> Very low </label>
+        <label>
+            <input type="radio" name="q2" value="2"> Low </label>
+        <label>
+            <input type="radio" name="q2" value="3"> Neutral </label>
+        <label>
+            <input type="radio" name="q2" value="4"> High </label>
+        <label>
+            <input type="radio" name="q2" value="5"> Very High </label>
+    </div>
+    <input type="submit">
+  </form>
+
+</body>
+</html>

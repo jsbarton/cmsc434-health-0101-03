@@ -1,22 +1,32 @@
 /* Let’s find out more about you */
 
-body {
+.outer {
   font-family: 'Spartan';
   background: #D0EEFF;
   padding: 50px 0;
   font-size: 1.2em;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;     
+  justify-content: center; 
+  padding-left: 40px; 
+  padding-right: 40px;
 }
 
-.intro {
-  position: absolute;
-  top: 75px;
-  left: 47%;
+#user-name {
+  align-self: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+#user-image {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;     
+  justify-content: center; 
 }
 
 #photo {
-  position: absolute;
-  top: 150px;
-  left: 43%;
   height: 200px;
   width: 200px;
   background-color: #dedede;
@@ -28,19 +38,13 @@ body {
 }
 
 #upload-btn{
-  position:absolute;
-  top: 240px;
-  left: 47%;
   background-color: rgba(0, 0, 0, 0.7);
   color: wheat;
   font-size: 15px;
   border-radius: 1.75rem;
 }
 .container {
-  position: absolute;
-  top: 350px;
-  left:50%;
-  width: 100%
+  width: 50px;
 }
 
 .break {
@@ -49,7 +53,6 @@ body {
 }
 
 .stats-block {
-  position: absolute;
   background: #e8f5fc;
   border-radius: 1rem;
   top: 400px;

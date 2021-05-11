@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+	<link rel="stylesheet" href="BMIcalc.css">
+	<link rel="stylesheet" href="global-styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+	<script src="./mentalHealth.js"></script>
+  <script>
+    function loadBMI() {
+			
+			let elem = document.getElementById("suggestion")
+			let suggestion = getSuggestion()
+
+			let p = document.createElement("p")
+			p.innerHTML = suggestion
+			elem.appendChild(p)
+
+		} 
+
+		window.onload = loadBMI
+  </script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<p id="intro">Mental Health Exercise</p>
+		<fieldset id="suggestion">
+		</fieldset>
+		<a href="./mentalCalc.html">
+			<p id="intro">Mental Health Tracker</p>
+		</a>
+	</div>
+	<a href="./homePage.html">
+		<img src="back_button.svg" style="margin: 10px 0px 10px 10px; width: 50px;"> Back to Home Page
+	</a>
+</body>
+		

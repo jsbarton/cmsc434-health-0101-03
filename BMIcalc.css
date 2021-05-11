@@ -16,9 +16,23 @@ label {
 	margin-top: 10px;
 }
 
-button {
-	margin-left: 150px;
-}
+/* button {
+	font-family: "Spartan";
+	font-weight: bolder;
+	src: url("Spartan-VariableFont_wght.ttf");
+	src: url("spartan-variablefont_wght-webfont.woff") format("woff");
+	margin-left: 175px;
+	background-color: #cccccc;
+	border: none;
+	color: black;
+	padding: 10px 30px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-top: 10px;
+	border-radius: 10px;
+}  */
 
 .wrapper {
     font-family: 'Spartan';
@@ -35,6 +49,13 @@ input {
 	display: block;
 	text-align: right;
 	width: 128px;
+}
+
+#next {
+	font-family: "Spartan";
+	font-weight: bolder;
+	src: url("Spartan-VariableFont_wght.ttf");
+	src: url("spartan-variablefont_wght-webfont.woff") format("woff");
 }
 
 #bmi_label {

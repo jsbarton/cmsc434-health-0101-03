@@ -1,12 +1,22 @@
 
 
-.box {
+.background {
   display: flex; 
   flex-direction: column; 
   align-items: center;     
   justify-content: center; 
   padding-left: 40px; 
   padding-right: 40px;
+}
+
+.link {
+  font-family: 'Spartan', Arial, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  box-shadow: black;
+  border: 3px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .option {
