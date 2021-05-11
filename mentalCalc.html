@@ -3,7 +3,7 @@
 
 <html>
 <head>
-  <link rel="stylesheet" href="mentalCalc.css">
+  <link rel="stylesheet" href="exercises.css">
   <link rel="stylesheet" href="global-styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
 </head>
@@ -56,32 +56,29 @@
 </script>
 <body>
   <form onsubmit="return setMood()" action="./mentalTracker.html">
-    <div class="bs-example">
-        <p class="lead">How postive/negative do you feel?</p>
-        <label>
-            <input type="radio" name="q1" value="1"> Very negative </label>
-        <label>
-            <input type="radio" name="q1" value="2"> Negative </label>
-        <label>
-            <input type="radio" name="q1" value="3"> Neutral </label>
-        <label>
-            <input type="radio" name="q1" value="4"> Positive </label>
-        <label>
-            <input type="radio" name="q1" value="5"> Very Positive </label>
-        <br>
-        <br>
-        <p class="lead">How high/low enegery do you feel?</p>
-        <label>
-            <input type="radio" name="q2" value="1"> Very low </label>
-        <label>
-            <input type="radio" name="q2" value="2"> Low </label>
-        <label>
-            <input type="radio" name="q2" value="3"> Neutral </label>
-        <label>
-            <input type="radio" name="q2" value="4"> High </label>
-        <label>
-            <input type="radio" name="q2" value="5"> Very High </label>
+    <div class="dropdown">
+      <div class = "set1">
+        <button class="dropbtn">How postive/negative do you feel?</button>
+        <div class = "dropdown-content">
+            <p>Very negative </p> 
+            <p> Negative </p>
+            <p> Neutral </p>
+            <p> Positive </p>
+            <p> Very Positive </p>
+          </div>
     </div>
+    
+    <div class="dropdown2">
+      <div class = "set2">
+      <button class="dropbtn">How high/low energy do you feel?</button>
+      <div class = "dropdown-content">
+          <p>Very Low </p> 
+          <p> Low </p>
+          <p> Neutral </p>
+          <p> High </p>
+          <p> Very High </p>
+        </div>
+  </div>
     <input type="submit">
   </form>
 
